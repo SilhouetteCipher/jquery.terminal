@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrative jQuery Terminal</title>
+    <link rel="stylesheet" href="css/jquery.terminal.min.css">
+</head>
+<body>
+
+<div id="my-terminal"></div>
+
+<!-- Local jQuery and jQuery Terminal Scripts -->
+<script src="js/jquery-3.7.0.min.js"></script>
+<script src="js/jquery.terminal.min.js"></script>
+
+<!-- Initialization Script -->
+<script>
+    let narrativeData = {};
+
+    // Fetch the JSON data when the page loads
+    fetch('narrative.json')
+        .then(response => response.json())
+        .then(data => {
+            narrativeData = data;
+            initTerminal();
+        })
+        .catch(error => console.error('Error loading narrative data:', error));
+
+    function initTerminal() {
+        $('#my-terminal').terminal(function(command) {
+            if (command in narrativeData) {
+                this.echo(narrativeData[command]);
+            } else if (command.startsWith("read ")) {
+                let filename = command.split(" ")[1];
+                // For simplicity, just echoing the filename for now. You can expand this to load file content.
+                this.echo(`You're reading ${filename}`);
+            } else {
+                this.echo('Unknown command: ' + command);
+            }
+        }, {
+            greetings: 'Welcome to the narrative terminal!\nType "help" to see available commands.',
+            prompt: '> '
+        });
+    }
+</script>
+
+</body>
+</html>

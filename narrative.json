@@ -1,0 +1,5 @@
+{
+    "ls": "story_1.txt, notes.txt, journal.txt",
+    "help": "Available commands: ls, help, quit, read [filename]",
+    "quit": "Goodbye! Thanks for engaging with the story."
+}
