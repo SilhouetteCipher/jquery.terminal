@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    function typeText(term, message, delay = 50) {
+    function typeText(term, message, delay = 10) {
         term.echo(''); // Add a new line
         let container = term.find('.terminal-output > :last-child > div');
         let index = 0;

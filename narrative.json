@@ -1,6 +1,21 @@
 {
     "greetings": "Welcome to the VEIL terminal! Type \"narrative\" to fetch the narrative data.",
     "contents": "Your other narrative content here...",
-    "database": "+---------+----------------------------------------+-----------+----------+---------------------+\n| VEIL ID |              DESCRIPTION               | STATUS    |  ENERGY  |  LAST COMMUNICATION |\n+---------+----------------------------------------+-----------+----------+---------------------+\n| VEIL00  | Primordial Nexus - Origin Point        | Stable    | High     | 0032-21-05 18:03:42 |\n| VEIL01  | Nebulous Strand - Dark Matter Dominant | Oscillate | Medium   | 0032-21-05 19:20:10 |\n| VEIL02  | Quantum Fracture - Temporal Anomalies  | Unstable  | Low      | 0032-21-05 21:11:23 |\n| VEIL03  | Sol System                             | Stable    | High     | 0032-21-05 22:01:04 |\n| VEIL04  | Stellar Graveyard - Dying Suns         | Dimming   | Low      | 0032-21-05 23:42:19 |\n| VEIL05  | Ethereal Weave - Phased Reality        | Phasing   | Medium   | 0032-21-06 01:05:12 |\n| VEIL06  | Nebula Veil - Gas Giant Territories   | Gaseous   | High     | 0032-21-06 02:23:47 |\n| VEIL07  | Void Expanse - Matterless Abyss        | Voided    | None     | 0032-21-06 03:52:31 |\n| VEIL08  | Cosmic Choir - Resonant Frequencies    | Harmonic  | Medium   | 0032-21-06 04:37:16 |\n| VEIL09  | Interstellar Web - Networked Galaxies  | Linked    | High     | 0032-21-06 05:18:59 |\n+---------+----------------------------------------+-----------+----------+---------------------+",
+    "database": [
+        "+---------+----------------------------------------+-----------+----------+---------------------+",
+        "| VEIL ID |              DESCRIPTION               | STATUS    |  ENERGY  |  LAST COMMUNICATION |",
+        "+---------+----------------------------------------+-----------+----------+---------------------+",
+        "| VEIL00  | Primordial Nexus - Origin Point        | Stable    | High     | 0032-21-05 18:03:42 |",
+        "| VEIL01  | Nebulous Strand - Dark Matter Dominant | Oscillate | Medium   | 0032-21-05 19:20:10 |",
+        "| VEIL02  | Quantum Fracture - Temporal Anomalies  | Unstable  | Low      | 0032-21-05 21:11:23 |",
+        "| VEIL03  | Sol System                             | Stable    | High     | 0032-21-05 22:01:04 |",
+        "| VEIL04  | Stellar Graveyard - Dying Suns         | Dimming   | Low      | 0032-21-05 23:42:19 |",
+        "| VEIL05  | Ethereal Weave - Phased Reality        | Phasing   | Medium   | 0032-21-06 01:05:12 |",
+        "| VEIL06  | Nebula Veil - Gas Giant Territories    | Gaseous   | High     | 0032-21-06 02:23:47 |",
+        "| VEIL07  | Void Expanse - Matterless Abyss        | Voided    | None     | 0032-21-06 03:52:31 |",
+        "| VEIL08  | Cosmic Choir - Resonant Frequencies    | Harmonic  | Medium   | 0032-21-06 04:37:16 |",
+        "| VEIL09  | Interstellar Web - Networked Galaxies  | Linked    | High     | 0032-21-06 05:18:59 |",
+        "+---------+----------------------------------------+-----------+----------+---------------------+"
+    ],
     "ls": "load of bollocks list"
 }
