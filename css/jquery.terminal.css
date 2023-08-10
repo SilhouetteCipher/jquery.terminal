@@ -413,8 +413,8 @@ terminal .terminal-output > div {
 /* DEFAULT ANIMATION */
 @-webkit-keyframes terminal-blink {
     0%, 50% {
-        background-color: #aaa;
-        background-color: var(--original-color, #aaa);
+        background-color: #25c42d;
+        background-color: var(--original-color, #2bff01);
         color: #000;
         color: var(--original-background, #000);
         -webkit-box-shadow: 0 0 calc(var(--glow) * 3px) var(--color, #aaa);
@@ -530,7 +530,7 @@ terminal .terminal-output > div {
 }
 @keyframes terminal-bar {
   0%, 50% {
-      box-shadow: -2px 0 0 -1px #aaa;
+      box-shadow: -20px 0 0 -10px #aaa;
       box-shadow: -2px 0 0 -1px var(--original-color, #aaa);
   }
   50.1%, 100% {
