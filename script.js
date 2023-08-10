@@ -1,11 +1,33 @@
+var typeSpeed = 20;
+
 $(document).ready(function() {
-    const terminal = $('#terminal').terminal({
-        narrative: function() {
+    // Function to simulate typing effect
+    function typeText(element, text, interval, callback) {
+        let index = 0;
+        const typingInterval = setInterval(function() {
+            if (index < text.length) {
+                element.insert(text.charAt(index)); // Use insert to add characters to the terminal
+                index++;
+            } else {
+                clearInterval(typingInterval);
+                if (callback) callback();
+            }
+        }, interval);
+    }
+
+    const terminal = $('#terminal').terminal(function(command) {
+        if (command) {
             $.getJSON('https://silhouettecipher.github.io/jquery.terminal/narrative.json', function(data) {
-                this.echo(data.content, { raw: true });
+                if (data[command]) {
+                    typeText(this, data[command], typeSpeed); // Use the typeText function to display the response
+                } else {
+                    this.error('Unknown command.');
+                }
             }.bind(this)).fail(function() {
                 this.error('Failed to fetch narrative data.');
             }.bind(this));
+        } else {
+            this.echo('');
         }
     }, {
         greetings: '', // Empty the default greetings
@@ -15,33 +37,8 @@ $(document).ready(function() {
         onInit: function(term) {
             // Fetch the greetings from the narrative.json and display it
             $.getJSON('https://silhouettecipher.github.io/jquery.terminal/narrative.json', function(data) {
-                term.echo(data.greetings, { raw: true });
+                typeText(term, data.greetings, typeSpeed); // Use the typeText function to display the greetings
             });
-        },
-        process: function(command) {
-            // Remove non-breaking spaces and return the cleaned command
-            return command.replace(/\u00A0/g, ' ');
         }
     });
 });
-
-$('#terminal').on('keypress', function(e) {
-    if (e.which === 160) { // 160 is the char code for non-breaking space
-        e.preventDefault(); // Prevent the non-breaking space from being added
-        const currentInput = terminal.get_command();
-        terminal.set_command(currentInput + ' '); // Add a regular space instead
-    }
-});
-//codepen crt
-$(document).ready(function() {
-    const terminal = $('#terminal');
-    
-    function adjustBackgroundSize() {
-        const size = (Math.random() * 50) + 50 + '% ' + (Math.random() * 50) + 50 + '%';
-        terminal.css('--size', size);
-    }
-
-    setInterval(adjustBackgroundSize, 100); // Reduced interval for more frequent flickering
-});
-
-

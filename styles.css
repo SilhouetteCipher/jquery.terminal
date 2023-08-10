@@ -1,5 +1,5 @@
 :root {
-    --font-size: 18px; /* Default font size */
+    --font-size: 12px; /* Default font size */
     --glow-color: #5CFF5C; /* Default glow color */
     --glow-blur-1: 2px; /* First blur radius */
     --glow-blur-2: 4px; /* Second blur radius */
