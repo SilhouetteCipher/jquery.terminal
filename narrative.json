@@ -1,5 +1,5 @@
 {
     "greetings": "Welcome to the narrative terminal! Type \"narrative\" to fetch the narrative data.",
-    "content": "Your other narrative content here...",
+    "contents": "Your other narrative content here...",
     "init": "table here"
 }
