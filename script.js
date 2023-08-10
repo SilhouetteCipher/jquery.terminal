@@ -8,7 +8,7 @@ $(document).ready(function() {
         let interval = setInterval(function() {
             if (index < message.length) {
                 container.append(message[index]);
-                sound.play();  // Play the sound
+                //sound.play();  // Play the sound
                 index++;
             } else {
                 clearInterval(interval);
