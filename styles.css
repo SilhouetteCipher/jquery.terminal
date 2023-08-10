@@ -1,0 +1,10 @@
+#terminal {
+    width: 1300px;
+    height: 1428px;
+    border: 1px solid #000;
+    background-color: #000;
+}
+
+.terminal-output div div {
+    color: lime;
+}

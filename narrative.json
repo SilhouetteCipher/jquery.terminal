@@ -1,5 +1,3 @@
 {
-    "ls": "story_1.txt, notes.txt, journal.txt",
-    "help": "Available commands: ls, help, quit, read [filename]",
-    "quit": "Goodbye! Thanks for engaging with the story."
+    "content": "This is the narrative content from the JSON file."
 }

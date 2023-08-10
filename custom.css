@@ -1,0 +1,6 @@
+#my-terminal {
+    width: 1800px;
+    height: 1428px;
+    margin: 0 auto; /* This will center the terminal horizontally if the screen is wider than 1800px */
+    overflow: auto; /* To ensure any extra content is scrollable */
+}
