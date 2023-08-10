@@ -1,3 +1,5 @@
+
+let sound = document.getElementById("typeSound");
 $(document).ready(function() {
     function typeText(term, message, delay = 10) {
         term.echo(''); // Add a new line
@@ -6,6 +8,7 @@ $(document).ready(function() {
         let interval = setInterval(function() {
             if (index < message.length) {
                 container.append(message[index]);
+                sound.play();  // Play the sound
                 index++;
             } else {
                 clearInterval(interval);
@@ -18,7 +21,8 @@ $(document).ready(function() {
         const cmd = command.toLowerCase();
         $.getJSON('https://silhouettecipher.github.io/jquery.terminal/narrative.json', function(data) {
             if (data[cmd]) {
-                typeText(this, data[cmd]);
+                const response = Array.isArray(data[cmd]) ? data[cmd].join('\n') : data[cmd];
+                typeText(this, response);
             } else {
                 this.error(`Unknown command: ${cmd}`);
             }
