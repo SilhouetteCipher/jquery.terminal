@@ -1,18 +1,22 @@
 $(document).ready(function() {
-    const terminal = $('#terminal').terminal(function(command) {
-        if (command === 'narrative') {
-            $.getJSON('narrative.json', function(data) {
-                terminal.echo(data.content);
-            }).fail(function() {
-                terminal.error('Failed to fetch narrative data.');
-            });
-        } else {
-            terminal.error('Unknown command.');
+    const terminal = $('#terminal').terminal({
+        narrative: function() {
+            $.getJSON('https://silhouettecipher.github.io/jquery.terminal/narrative.json', function(data) {
+                this.echo(data.content, { raw: true });
+            }.bind(this)).fail(function() {
+                this.error('Failed to fetch narrative data.');
+            }.bind(this));
         }
     }, {
-        greetings: 'Welcome to the narrative terminal! Type "narrative" to fetch the narrative data.',
+        greetings: '', // Empty the default greetings
         name: 'narrative_terminal',
         height: 1428,
-        width: 1300
+        width: 1300,
+        onInit: function(term) {
+            // Fetch the greetings from the narrative.json and display it
+            $.getJSON('https://silhouettecipher.github.io/jquery.terminal/narrative.json', function(data) {
+                term.echo(data.greetings, { raw: true });
+            });
+        }
     });
 });

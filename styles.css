@@ -5,6 +5,18 @@
     background-color: #000;
 }
 
-.terminal-output div div {
-    color: lime;
+#terminal .terminal-output div div, 
+#terminal .terminal-output div span, 
+#terminal .terminal-output div a {
+    color: lime !important;
+    font-family: 'glasstty', monospace; /* Example font */
+    font-size: 18px; /* Example font size */
+    white-space: pre-wrap;
+}
+
+@font-face {
+    font-family: 'glasstty';
+    src: url('https://silhouettecipher.github.io/glasstty/Glass_TTY_VT220.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
