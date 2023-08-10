@@ -1,34 +1,30 @@
-var typeSpeed = 20;
-
 $(document).ready(function() {
-    // Function to simulate typing effect
-    function typeText(element, text, interval, callback) {
+    function typeText(term, message, delay = 50) {
+        term.echo(''); // Add a new line
+        let container = term.find('.terminal-output > :last-child > div');
         let index = 0;
-        const typingInterval = setInterval(function() {
-            if (index < text.length) {
-                element.insert(text.charAt(index)); // Use insert to add characters to the terminal
+        let interval = setInterval(function() {
+            if (index < message.length) {
+                container.append(message[index]);
                 index++;
             } else {
-                clearInterval(typingInterval);
-                if (callback) callback();
+                clearInterval(interval);
+                term.resume();
             }
-        }, interval);
+        }, delay);
     }
-
+    
     const terminal = $('#terminal').terminal(function(command) {
-        if (command) {
-            $.getJSON('https://silhouettecipher.github.io/jquery.terminal/narrative.json', function(data) {
-                if (data[command]) {
-                    typeText(this, data[command], typeSpeed); // Use the typeText function to display the response
-                } else {
-                    this.error('Unknown command.');
-                }
-            }.bind(this)).fail(function() {
-                this.error('Failed to fetch narrative data.');
-            }.bind(this));
-        } else {
-            this.echo('');
-        }
+        const cmd = command.toLowerCase();
+        $.getJSON('https://silhouettecipher.github.io/jquery.terminal/narrative.json', function(data) {
+            if (data[cmd]) {
+                typeText(this, data[cmd]);
+            } else {
+                this.error(`Unknown command: ${cmd}`);
+            }
+        }.bind(this)).fail(function() {
+            this.error('Failed to fetch narrative data.');
+        }.bind(this));
     }, {
         greetings: '', // Empty the default greetings
         name: 'narrative_terminal',
@@ -37,8 +33,21 @@ $(document).ready(function() {
         onInit: function(term) {
             // Fetch the greetings from the narrative.json and display it
             $.getJSON('https://silhouettecipher.github.io/jquery.terminal/narrative.json', function(data) {
-                typeText(term, data.greetings, typeSpeed); // Use the typeText function to display the greetings
+                if (data.greetings) {
+                    typeText(term, data.greetings);
+                } else {
+                    term.error('Failed to fetch greetings.');
+                }
             });
         }
     });
+    
+
+    //codepen crt
+    const adjustBackgroundSize = function() {
+        const size = (Math.random() * 50) + 50 + '% ' + (Math.random() * 50) + 50 + '%';
+        terminal.css('--size', size);
+    }
+
+    setInterval(adjustBackgroundSize, 100); // Reduced interval for more frequent flickering
 });
